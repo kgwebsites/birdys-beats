@@ -19,7 +19,7 @@ const ProductCard = (props) => {
   } = props;
 
   const handleRouteToProduct = () => {
-    navigate('/product/sample');
+    navigate('/beat/sample');
   };
 
   const handleQuickView = (e) => {

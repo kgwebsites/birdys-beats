@@ -6,7 +6,6 @@ import Container from '../Container';
 import Dropdown from '../Dropdown/Dropdown';
 import FormInputField from '../FormInputField/FormInputField';
 import Icon from '../Icons/Icon';
-import Button from '../Button';
 import Config from '../../config.json';
 import * as styles from './Footer.module.css';
 
@@ -166,16 +165,6 @@ const Footer = (prop) => {
                   ></img>
                 )}
               </div>
-              <span>
-                {new Date().getFullYear()} (c) . Built by{' '}
-                <Button target={true} href="https://www.matterdesign.com.au/">
-                  Matter.
-                </Button>{' '}
-                Powered by{' '}
-                <Button target={true} href="https://jamm.matter.design/">
-                  JAMM.™
-                </Button>
-              </span>
             </div>
           </div>
         </Container>

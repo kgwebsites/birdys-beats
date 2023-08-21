@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+local_backend: true
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'beats'
+    label: 'Beats'
+    folder: 'src/pages/beats'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'beat',
+        }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Featured Beat', name: 'featuredbeat', widget: 'boolean' }
+      - { label: 'Image', name: 'image', widget: image }
+      - { label: 'Full Beat', name: 'beat', widget: file }
+      - { label: 'Preview Beat', name: 'preview-beat', widget: file }
+      - { label: 'Tags', name: 'tags', widget: 'list' }

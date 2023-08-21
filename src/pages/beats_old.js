@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import * as styles from './shop.module.css';
+import * as styles from './beats.module.css';
 
 import Banner from '../components/Banner';
-import Breadcrumbs from '../components/Breadcrumbs';
 import CardController from '../components/CardController';
 import Container from '../components/Container';
 import Chip from '../components/Chip';
@@ -31,24 +30,17 @@ const ShopPage = (props) => {
   return (
     <Layout>
       <div className={styles.root}>
-        <Container size={'large'} spacing={'min'}>
-          <div className={styles.breadcrumbContainer}>
-            <Breadcrumbs
-              crumbs={[
-                { link: '/', label: 'Home' },
-                { link: '/', label: 'Woman' },
-                { label: 'Sweaters' },
-              ]}
-            />
-          </div>
-        </Container>
         <Banner
           maxWidth={'650px'}
-          name={`Woman's Sweaters`}
+          name={`Beats for sale`}
+          bgImage="/tapes.jpg"
           subtitle={
-            'Look to our women’s sweaters for modern takes on one-and-done dressing. From midis in bold prints to dramatic floor-sweeping styles and easy all-in-ones, our edit covers every mood.'
+            'Rhythmic Resonance: Exploring the Pulse of Contemporary Soundscapes.'
           }
         />
+        <small className={styles.credit}>
+          Photo by hosein zanbori on Unsplash
+        </small>
         <Container size={'large'} spacing={'min'}>
           <div className={styles.metaContainer}>
             <span className={styles.itemCount}>476 items</span>
