@@ -44,6 +44,10 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
+    createPage({
+      path: '/beats',
+      component: path.resolve('src/templates/beats.js'),
+    });
     const posts = result.data.allMarkdownRemark.edges;
     posts.forEach((edge) => {
       console.log(edge.node.id);
