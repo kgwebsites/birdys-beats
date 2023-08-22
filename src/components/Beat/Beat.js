@@ -27,11 +27,11 @@ export default function Beat({ beat }) {
                   image: beat.frontmatter.image,
                   alt: `featured image thumbnail for post ${beat.frontmatter.title}`,
                   width:
-                    beat.frontmatter.image.childImageSharp.gatsbyImageData
-                      .width,
+                    beat.frontmatter.image?.childImageSharp?.gatsbyImageData
+                      ?.width,
                   height:
-                    beat.frontmatter.image.childImageSharp.gatsbyImageData
-                      .height,
+                    beat.frontmatter.image?.childImageSharp?.gatsbyImageData
+                      ?.height,
                 }}
               />
               <p className={styles.previewText}>PREVIEW</p>

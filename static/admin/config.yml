@@ -10,7 +10,7 @@ backend:
 
 local_backend: true
 media_folder: static
-public_folder: /static
+public_folder: /public
 
 collections:
   - name: 'beats'
@@ -28,7 +28,12 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Featured Beat', name: 'featuredbeat', widget: 'boolean' }
+      - {
+          label: 'Featured Beat',
+          name: 'featuredbeat',
+          widget: 'boolean',
+          required: false,
+        }
       - { label: 'Price', name: 'price', widget: number }
       - { label: 'Image', name: 'image', widget: image }
       - { label: 'Full Beat', name: 'beat', widget: file }

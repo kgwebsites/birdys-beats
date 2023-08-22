@@ -1,6 +1,9 @@
 .thumbnailContainer {
   position: relative;
 }
+.thumbnailContainer img {
+  max-width: 100%;
+}
 
 .beatContainer {
   max-width: 300px;
