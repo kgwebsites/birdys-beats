@@ -1,6 +1,4 @@
 import React from 'react';
-
-import { navigate } from 'gatsby';
 import CurrencyFormatter from '../CurrencyFormatter';
 import RemoveItem from '../RemoveItem';
 import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleImage';

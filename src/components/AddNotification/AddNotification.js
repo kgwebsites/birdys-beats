@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import React, { useContext } from 'react';
 
 import AddItemNotificationContext from '../../context/AddItemNotificationProvider';
@@ -11,15 +10,6 @@ import CartContext from '../../context/CartProvider';
 import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleImage';
 
 const AddNotification = (props) => {
-  const sampleCartItem = {
-    image: '/products/pdp1.jpeg',
-    alt: '',
-    name: 'Lambswool Crew Neck Jumper',
-    price: 220,
-    color: 'Anthracite Melange',
-    size: 'XS',
-  };
-
   const ctxAddItemNotification = useContext(AddItemNotificationContext);
   const cartLength = useContext(CartContext).state.size;
   const { open: showNotif, beat } = ctxAddItemNotification.state;

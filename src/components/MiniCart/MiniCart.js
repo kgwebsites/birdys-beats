@@ -1,5 +1,5 @@
 import { Link, navigate } from 'gatsby';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import Button from '../Button';
 import CurrencyFormatter from '../CurrencyFormatter';

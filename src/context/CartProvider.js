@@ -10,15 +10,7 @@ export const CartProvider = ({ children }) => {
 
   const add = (item) => {
     const newState = new Map([...state]);
-    const itemInCart = state.get(item.id);
-    if (itemInCart) {
-      newState.set(item.id, {
-        ...itemInCart,
-        quanity: itemInCart.quantity + 1,
-      });
-    } else {
-      newState.set(item.id, item);
-    }
+    newState.set(item.id, item);
     setState(newState);
   };
 
