@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Icon from '../Icons/Icon';
 
 import * as styles from './RemoveItem.module.css';
+import CartContext from '../../context/CartProvider';
 
-const RemoveItem = (props) => {
+const RemoveItem = ({ id }) => {
+  const cartContext = useContext(CartContext);
+
   return (
-    <div className={styles.root}>
+    <button className={styles.root} onClick={() => cartContext.remove(id)}>
       <Icon symbol={'cross'} />
-    </div>
+    </button>
   );
 };
 

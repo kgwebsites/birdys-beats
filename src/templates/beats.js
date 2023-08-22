@@ -13,7 +13,8 @@ const BeatsPage = ({ data }) => {
       <section className="section">
         <div className="container">
           <div className="content">
-            {beats && beats.map(({ node: beat }) => <Beat beat={beat} />)}
+            {beats &&
+              beats.map(({ node: beat }) => <Beat key={beat.id} beat={beat} />)}
           </div>
         </div>
       </section>

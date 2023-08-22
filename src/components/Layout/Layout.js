@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
@@ -8,8 +8,10 @@ import * as styles from './Layout.module.css';
 
 // CSS not modular here to provide global styles
 import './Globals.css';
+import CartContext from '../../context/CartProvider';
 
 const Layout = ({ props, children, disablePaddingBottom = false }) => {
+  const { getAll } = useContext(CartContext);
   return (
     <>
       <Helmet>

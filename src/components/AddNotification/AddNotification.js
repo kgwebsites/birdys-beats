@@ -7,6 +7,8 @@ import Button from '../Button';
 import Icon from '../Icons/Icon';
 
 import * as styles from './AddNotification.module.css';
+import CartContext from '../../context/CartProvider';
+import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleImage';
 
 const AddNotification = (props) => {
   const sampleCartItem = {
@@ -19,7 +21,8 @@ const AddNotification = (props) => {
   };
 
   const ctxAddItemNotification = useContext(AddItemNotificationContext);
-  const showNotif = ctxAddItemNotification.state?.open;
+  const cartLength = useContext(CartContext).state.size;
+  const { open: showNotif, beat } = ctxAddItemNotification.state;
 
   return (
     <div
@@ -27,35 +30,48 @@ const AddNotification = (props) => {
         showNotif === true ? styles.show : styles.hide
       }`}
     >
-      <div className={styles.header}>
-        <div className={styles.iconContainer}>
-          <Icon symbol={'check'}></Icon>
-        </div>
-        <span>Item added to bag</span>
-      </div>
+      {!beat ? null : (
+        <>
+          <div className={styles.header}>
+            <div className={styles.iconContainer}>
+              <Icon symbol={'check'}></Icon>
+            </div>
+            <span>🔥 added to bag</span>
+          </div>
 
-      <div className={styles.newItemContainer}>
-        <div className={styles.imageContainer}>
-          <img alt={sampleCartItem.alt} src={sampleCartItem.image} />
-        </div>
-        <div className={styles.detailContainer}>
-          <span className={styles.name}>{sampleCartItem.name}</span>
-          <span className={styles.meta}>Color: {sampleCartItem.color}</span>
-          <span className={styles.meta}>Size: {sampleCartItem.size}</span>
-        </div>
-      </div>
+          <div className={styles.newItemContainer}>
+            <div className={styles.imageContainer}>
+              <PreviewCompatibleImage
+                imageInfo={{
+                  image: beat.frontmatter.image,
+                  alt: `featured image thumbnail for post ${beat.frontmatter.title}`,
+                  width:
+                    beat.frontmatter.image.childImageSharp.gatsbyImageData
+                      .width,
+                  height:
+                    beat.frontmatter.image.childImageSharp.gatsbyImageData
+                      .height,
+                }}
+              />
+            </div>
+            <div className={styles.detailContainer}>
+              <span className={styles.name}>{beat.frontmatter.title}</span>
+              <span className={styles.meta}>
+                {beat.frontmatter.description}
+              </span>
+            </div>
+          </div>
 
-      <div className={styles.actionContainer}>
-        <Button onClick={props.openCart} level={'secondary'}>
-          view my bag (1)
-        </Button>
-        <Button level="primary" href="/cart">
-          checkout
-        </Button>
-        <div className={styles.linkContainer}>
-          <Link to={'/shop'}>continue shopping</Link>
-        </div>
-      </div>
+          <div className={styles.actionContainer}>
+            <Button onClick={props.openCart} level={'secondary'}>
+              view my 🔥 ({cartLength})
+            </Button>
+            <Button level="primary" href="/cart">
+              checkout
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

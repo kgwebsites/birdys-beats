@@ -9,8 +9,8 @@ export const NotificationContext = createContext(defaultState);
 export const NotificationProvider = ({ children }) => {
   const [state, setState] = useState(defaultState);
 
-  const showNotification = () => {
-    setState({ ...state, open: true });
+  const showNotification = (beat) => {
+    setState({ ...state, open: true, beat });
   };
 
   const closeNotification = () => {

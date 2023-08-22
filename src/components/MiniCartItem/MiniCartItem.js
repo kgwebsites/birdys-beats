@@ -1,23 +1,26 @@
 import React from 'react';
 
 import { navigate } from 'gatsby';
-import AdjustItem from '../AdjustItem';
 import CurrencyFormatter from '../CurrencyFormatter';
 import RemoveItem from '../RemoveItem';
+import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleImage';
 
 import * as styles from './MiniCartItem.module.css';
 
 const MiniCartItem = (props) => {
-  const { image, alt, name, price, color, size } = props;
+  const { id, image, name, price, description } = props;
 
   return (
     <div className={styles.root}>
-      <div
-        className={styles.imageContainer}
-        role={'presentation'}
-        onClick={() => navigate('/beat/sample')}
-      >
-        <img src={image} alt={alt} />
+      <div className={styles.imageContainer}>
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: image,
+            alt: `featured image thumbnail for post ${name}`,
+            width: image.childImageSharp.gatsbyImageData.width,
+            height: image.childImageSharp.gatsbyImageData.height,
+          }}
+        />
       </div>
       <div className={styles.detailsContainer}>
         <div className={styles.metaContainer}>
@@ -25,18 +28,11 @@ const MiniCartItem = (props) => {
           <div className={styles.priceContainer}>
             <CurrencyFormatter amount={price} />
           </div>
-          <span className={styles.meta}>Color: {color}</span>
-          <span className={styles.meta}>
-            Size:
-            <span className={styles.size}>{size}</span>
-          </span>
-        </div>
-        <div className={styles.adjustItemContainer}>
-          <AdjustItem />
+          <span className={styles.meta}>{description}</span>
         </div>
       </div>
       <div className={styles.closeContainer}>
-        <RemoveItem />
+        <RemoveItem id={id} />
       </div>
     </div>
   );

@@ -5,11 +5,12 @@ import AddItemNotificationContext from '../../context/AddItemNotificationProvide
 import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleImage';
 import * as styles from './Beat.module.css';
 import Button from '../Button/Button';
+import CartContext from '../../context/CartProvider';
 
 export default function Beat({ beat }) {
   const ctxAddItemNotification = useContext(AddItemNotificationContext);
+  const cartContext = useContext(CartContext);
   const showNotification = ctxAddItemNotification.showNotification;
-
   return (
     <div className={styles.beatContainer} key={beat.id}>
       <article
@@ -48,7 +49,14 @@ export default function Beat({ beat }) {
             </Link>
           </p>
           <p className={styles.description}>{beat.frontmatter.description}</p>
-          <Button onClick={showNotification} fullWidth level={'primary'}>
+          <Button
+            onClick={() => {
+              showNotification(beat);
+              cartContext.add(beat);
+            }}
+            fullWidth
+            level={'primary'}
+          >
             Add to Cart
           </Button>
         </header>
@@ -65,7 +73,7 @@ Beat.propTypes = {
     }),
     frontmatter: PropTypes.shape({
       featuredbeat: PropTypes.bool,
-      image: PropTypes.string,
+      image: PropTypes.object,
       preview_beat: PropTypes.string,
       title: PropTypes.string,
       description: PropTypes.string,
