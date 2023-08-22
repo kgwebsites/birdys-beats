@@ -1,0 +1,30 @@
+.root {
+  min-height: 50vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.root h2 {
+  font-size: 32px;
+  font-weight: normal;
+}
+
+.root p {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media (max-width: 600px) {
+  .root {
+    padding: 40px 0px;
+    min-height: unset;
+    gap: 16px;
+  }
+
+  .root h2 {
+    font-size: 24px;
+  }
+}
