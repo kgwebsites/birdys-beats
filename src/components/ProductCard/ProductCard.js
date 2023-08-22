@@ -14,17 +14,11 @@ const ProductCard = (props) => {
     price,
     originalPrice,
     meta,
-    showQuickView,
     height = 580,
   } = props;
 
   const handleRouteToProduct = () => {
     navigate('/beat/sample');
-  };
-
-  const handleQuickView = (e) => {
-    e.stopPropagation();
-    showQuickView();
   };
 
   const handleFavorite = (e) => {
@@ -40,13 +34,6 @@ const ProductCard = (props) => {
         role={'presentation'}
       >
         <img style={{ height: `${height}px` }} src={image} alt={imageAlt}></img>
-        <div
-          className={styles.bagContainer}
-          role={'presentation'}
-          onClick={(e) => handleQuickView(e)}
-        >
-          <Icon symbol={'bagPlus'} />
-        </div>
         <div
           className={styles.heartContainer}
           role={'presentation'}

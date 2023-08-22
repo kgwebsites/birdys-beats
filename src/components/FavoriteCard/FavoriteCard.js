@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-
-import Drawer from '../Drawer';
-import QuickView from '../QuickView';
+import React from 'react';
 
 import * as styles from './FavoriteCard.module.css';
 
 const FavoriteCard = (props) => {
-  const [showQuickView, setShowQuickView] = useState(false);
   const { color, size, img, alt, showConfirmDialog } = props;
   return (
     <div className={styles.root}>
@@ -20,20 +16,10 @@ const FavoriteCard = (props) => {
         </div>
       </div>
       <div className={styles.actionContainer}>
-        <span role={'presentation'} onClick={() => setShowQuickView(true)}>
-          Edit
-        </span>
         <span role={'presentation'} onClick={showConfirmDialog}>
           Remove
         </span>
       </div>
-
-      <Drawer visible={showQuickView} close={() => setShowQuickView(false)}>
-        <QuickView
-          buttonTitle={'update favorite'}
-          close={() => setShowQuickView(false)}
-        />
-      </Drawer>
     </div>
   );
 };

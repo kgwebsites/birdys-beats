@@ -2,19 +2,14 @@ import * as React from 'react';
 
 import Container from '../components/Container';
 import Hero from '../components/Hero';
-import BlogPreviewGrid from '../components/BlogPreviewGrid';
 import Layout from '../components/Layout/Layout';
 import Quote from '../components/Quote';
 import Title from '../components/Title';
-
-import { generateMockBlogData } from '../helpers/mock';
 
 import * as styles from './index.module.css';
 import { navigate } from 'gatsby';
 
 const IndexPage = () => {
-  const blogData = generateMockBlogData(3);
-
   const goToBeats = () => {
     navigate('/beats');
   };
@@ -39,14 +34,6 @@ const IndexPage = () => {
           'I believe in two things: the pursuit of quality in everything I do, and looking after one another. Everything else should take care of itself.”'
         }
       />
-
-      {/* Blog Grid */}
-      <div className={styles.blogsContainer}>
-        <Container size={'large'}>
-          <Title name={'Journal'} subtitle={'Notes on life and style'} />
-          <BlogPreviewGrid data={blogData} />
-        </Container>
-      </div>
     </Layout>
   );
 };
