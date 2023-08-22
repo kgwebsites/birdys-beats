@@ -42,7 +42,7 @@ const OrderConfirmPage = (props) => {
               title={'Contact Us'}
               icon={'phone'}
               subtitle={'Reach out to us'}
-              link={'/support#contact'}
+              link={'/contact'}
             />
           </div>
         </div>
