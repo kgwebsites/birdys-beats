@@ -46,7 +46,7 @@ const Contact = (props) => {
 
       <div className={styles.contactContainer}>
         <form
-          oname="contact"
+          name="contact"
           method="post"
           action="/contact/thanks/"
           data-netlify="true"
