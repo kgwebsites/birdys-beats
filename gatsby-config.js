@@ -13,7 +13,7 @@ module.exports = {
         background_color: `#000000`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: 'src/assets/favicon.png',
+        icon: 'static/favicon.png',
       },
     },
     'gatsby-plugin-netlify',
@@ -21,8 +21,8 @@ module.exports = {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/static/img`,
-        name: 'uploads',
+        path: `${__dirname}/static`,
+        name: 'assets',
       },
     },
     {
@@ -30,13 +30,6 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/assets`,
-        name: 'images',
       },
     },
     `gatsby-plugin-image`,
@@ -49,7 +42,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
-              name: 'uploads',
+              staticFolderName: 'static',
             },
           },
           {

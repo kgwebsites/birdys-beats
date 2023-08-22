@@ -35,7 +35,10 @@ export default function Beat({ beat }) {
               />
               <p className={styles.previewText}>PREVIEW</p>
               <audio className={styles.audio} controls>
-                <source src={beat.frontmatter.preview_beat} type="audio/mpeg" />
+                <source
+                  src={beat.frontmatter.preview_beat.publicURL}
+                  type="audio/mpeg"
+                />
                 Your browser does not support the audio element.
               </audio>
             </div>
@@ -48,6 +51,7 @@ export default function Beat({ beat }) {
               <strong>{beat.frontmatter.title} →</strong>
             </Link>
           </p>
+          <p className={styles.description}>${beat.frontmatter.price}</p>
           <p className={styles.description}>{beat.frontmatter.description}</p>
           <Button
             onClick={() => {
@@ -74,8 +78,11 @@ Beat.propTypes = {
     frontmatter: PropTypes.shape({
       featuredbeat: PropTypes.bool,
       image: PropTypes.object,
-      preview_beat: PropTypes.string,
+      preview_beat: PropTypes.shape({
+        publicURL: PropTypes.string,
+      }),
       title: PropTypes.string,
+      price: PropTypes.number,
       description: PropTypes.string,
     }),
   }).isRequired,

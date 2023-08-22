@@ -47,7 +47,9 @@ export const pageQuery = graphql`
             description
             templateKey
             featuredbeat
-            preview_beat
+            preview_beat {
+              publicURL
+            }
             image {
               childImageSharp {
                 gatsbyImageData(quality: 100, layout: FULL_WIDTH)
