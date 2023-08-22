@@ -13,7 +13,7 @@ import CurrencyFormatter from '../CurrencyFormatter/CurrencyFormatter';
 const AddNotification = (props) => {
   const ctxAddItemNotification = useContext(AddItemNotificationContext);
   const cartLength = useContext(CartContext).state?.size || 0;
-  const { open: showNotif, beat } = ctxAddItemNotification.state;
+  const { open: showNotif, beat } = ctxAddItemNotification?.state ?? {};
 
   return (
     <div
