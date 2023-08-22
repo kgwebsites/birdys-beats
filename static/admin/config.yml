@@ -29,6 +29,7 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Featured Beat', name: 'featuredbeat', widget: 'boolean' }
+      - { label: 'Price', name: 'price', widget: number }
       - { label: 'Image', name: 'image', widget: image }
       - { label: 'Full Beat', name: 'beat', widget: file }
       - { label: 'Preview Beat', name: 'preview-beat', widget: file }

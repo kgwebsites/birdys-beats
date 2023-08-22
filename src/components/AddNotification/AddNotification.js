@@ -8,6 +8,7 @@ import Icon from '../Icons/Icon';
 import * as styles from './AddNotification.module.css';
 import CartContext from '../../context/CartProvider';
 import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleImage';
+import CurrencyFormatter from '../CurrencyFormatter/CurrencyFormatter';
 
 const AddNotification = (props) => {
   const ctxAddItemNotification = useContext(AddItemNotificationContext);
@@ -46,6 +47,9 @@ const AddNotification = (props) => {
             </div>
             <div className={styles.detailContainer}>
               <span className={styles.name}>{beat.frontmatter.title}</span>
+              <span className={styles.meta}>
+                <CurrencyFormatter amount={beat.frontmatter.price} />
+              </span>
               <span className={styles.meta}>
                 {beat.frontmatter.description}
               </span>

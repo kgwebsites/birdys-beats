@@ -8,6 +8,7 @@ description: The inner thoughts of the well within
 image: /img/water.jpg
 beat: /audio/luscious_skies.mp3
 preview-beat: /audio/luscious_skies.mp3
+price: 220
 
 tags:
 

@@ -6,6 +6,7 @@ import PreviewCompatibleImage from '../PreviewCompatibleImage/PreviewCompatibleI
 import * as styles from './Beat.module.css';
 import Button from '../Button/Button';
 import CartContext from '../../context/CartProvider';
+import CurrencyFormatter from '../CurrencyFormatter/CurrencyFormatter';
 
 export default function Beat({ beat }) {
   const ctxAddItemNotification = useContext(AddItemNotificationContext);
@@ -51,7 +52,9 @@ export default function Beat({ beat }) {
               <strong>{beat.frontmatter.title} →</strong>
             </Link>
           </p>
-          <p className={styles.description}>${beat.frontmatter.price}</p>
+          <small className={styles.description}>
+            <CurrencyFormatter amount={beat.frontmatter.price} />
+          </small>
           <p className={styles.description}>{beat.frontmatter.description}</p>
           <Button
             onClick={() => {

@@ -50,6 +50,7 @@ export const pageQuery = graphql`
             preview_beat {
               publicURL
             }
+            price
             image {
               childImageSharp {
                 gatsbyImageData(quality: 100, layout: FULL_WIDTH)
