@@ -35,6 +35,7 @@ export default function Beat({ beat }) {
                 }}
               />
               <p className={styles.previewText}>PREVIEW</p>
+              {/* eslint-disable jsx-a11y/media-has-caption */}
               <audio className={styles.audio} controls>
                 <source
                   src={beat.frontmatter.preview_beat.publicURL}
