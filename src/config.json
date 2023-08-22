@@ -10,7 +10,7 @@
         },
         {
           "text": "Privacy Policy",
-          "link": "/support#policy"
+          "link": "/privacy"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "links": [
         {
           "text": "Contact Us",
-          "link": "/support#contact"
+          "link": "/contact"
         }
       ]
     }
