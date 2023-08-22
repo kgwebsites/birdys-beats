@@ -10,7 +10,7 @@ import CartContext from '../../context/CartProvider';
 
 const MiniCart = (props) => {
   const cartContext = useContext(CartContext);
-  const cartItems = [...cartContext.state.values()];
+  const cartItems = [...cartContext.state?.values()];
 
   return (
     <div className={styles.root}>
