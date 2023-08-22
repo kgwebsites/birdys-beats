@@ -5,10 +5,5 @@
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
-
-[[plugins]]
-  [plugins.inputs.postBuild]
-    enable = true
-
-  [plugins.inputs]
-    enable = false
+  package = "plugins.inputs.postBuild"
+  package = "plugins.inputs"
