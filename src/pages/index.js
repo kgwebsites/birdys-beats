@@ -1,12 +1,8 @@
 import * as React from 'react';
-
-import Container from '../components/Container';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout/Layout';
 import Quote from '../components/Quote';
-import Title from '../components/Title';
 
-import * as styles from './index.module.css';
 import { navigate } from 'gatsby';
 
 const IndexPage = () => {

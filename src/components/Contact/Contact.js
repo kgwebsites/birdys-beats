@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../Button';
 
+import { navigate } from 'gatsby-link';
 import FormInputField from '../FormInputField/FormInputField';
 
 import * as styles from './Contact.module.css';
@@ -22,43 +23,44 @@ const Contact = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setContactForm(initialState);
+    const form = e.target;
+    const formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch((error) => alert(error));
   };
 
   return (
     <div className={styles.root}>
       <div className={styles.section}>
-        <h4>Send Us A Message</h4>
-        <p>
-          Our Customer Service team are here for all enquiries Monday to Friday,
-          9am - 5pm AEDT (Australian Eastern Daylight Savings Time).
-        </p>
-        <p>We look forward to hearing from you.</p>
-      </div>
-
-      <div className={styles.section}>
-        <h4>Phone</h4>
-        <p>+1 424 280 4971</p>
-        <p>Monday to Friday - 9am - 5pm AEDT</p>
-      </div>
-
-      <div className={styles.section}>
         <h4>Email</h4>
         <p>
-          You can email our Customer Service team at customerservice@example.com
-          or via the contact form below:
+          You can email our Customer Service team at birdysbeats@gmail.com or
+          via the contact form below:
         </p>
       </div>
 
       <div className={styles.contactContainer}>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form
+          oname="contact"
+          method="post"
+          action="/contact/thanks/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+        >
+          <input type="hidden" name="form-name" value="contact" />
           <div className={styles.contactForm}>
             <FormInputField
               id={'name'}
               value={contactForm.name}
               handleChange={(id, e) => handleChange(id, e)}
               type={'text'}
-              labelName={'Full Name'}
+              labelName={'Name'}
               required
             />
             <FormInputField
