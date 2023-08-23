@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'gatsby';
 
-import { isAuth } from '../../helpers/general';
-
 import AddNotification from '../AddNotification';
 import Brand from '../Brand';
 import Container from '../Container';
@@ -77,20 +75,6 @@ const Header = (prop) => {
           </div>
           <Brand />
           <div className={styles.actionContainers}>
-            <Link
-              aria-label="Favorites"
-              to="/account/favorites"
-              className={`${styles.iconContainer} ${styles.hideOnMobile}`}
-            >
-              <Icon symbol={'heart'}></Icon>
-            </Link>
-            <Link
-              aria-label="Orders"
-              to={isAuth() ? '/login' : '/account/orders/'}
-              className={`${styles.iconContainer} ${styles.hideOnMobile}`}
-            >
-              <Icon symbol={'user'}></Icon>
-            </Link>
             <button
               aria-label="Cart"
               className={`${styles.iconButton} ${styles.iconContainer} ${styles.bagIconContainer}`}

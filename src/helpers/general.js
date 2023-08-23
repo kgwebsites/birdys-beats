@@ -59,24 +59,4 @@ function isEmpty(input) {
   if (input === '' || input === null || input === undefined) return true;
 }
 
-/**
- * Checks if user is authenticated
- * 
- * 
- * 
-    import { isAuth } from '../helpers/general'
-
-    isAuth()
- */
-function isAuth() {
-  const isBrowser = typeof window !== 'undefined';
-  if (isBrowser) {
-    const token = window.localStorage.getItem('key');
-    if (token) return true;
-    else return false;
-  } else {
-    return true;
-  }
-}
-
-export { isNumeric, validateEmail, validateStrongPassword, isEmpty, isAuth };
+export { isNumeric, validateEmail, validateStrongPassword, isEmpty };
