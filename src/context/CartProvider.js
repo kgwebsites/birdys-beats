@@ -22,6 +22,10 @@ export const CartProvider = ({ children }) => {
     return [...state.values()];
   };
 
+  const getTotal = () => {
+    return getAll().reduce((prev, curr) => prev + curr.frontmatter.price, 0);
+  };
+
   const remove = (id) => {
     const newState = new Map([...state]);
     newState.delete(id);
@@ -38,6 +42,7 @@ export const CartProvider = ({ children }) => {
         add,
         get,
         getAll,
+        getTotal,
         remove,
         removeAll,
       }}

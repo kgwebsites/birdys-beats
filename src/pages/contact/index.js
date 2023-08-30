@@ -19,7 +19,7 @@ const ContactPage = (props) => {
         />
         <div className={styles.pageContainer}>
           <Container size={'large'} spacing={'min'}>
-            <div className={`${styles.content}`}>
+            <div>
               <Contact />
             </div>
           </Container>
