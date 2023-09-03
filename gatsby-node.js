@@ -1,3 +1,4 @@
+const fs = require('fs');
 const _ = require('lodash');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
@@ -22,7 +23,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark {
         edges {
           node {
             id
@@ -32,6 +33,8 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               tags
               templateKey
+              price
+              title
             }
           }
         }
@@ -43,6 +46,16 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
+    // Create product manifest for serverless functions
+    const dataJSON = JSON.stringify(result.data);
+    fs.writeFile(
+      'api/product-manifest.json',
+      dataJSON,
+      'utf8',
+      () => undefined
+    );
+
+    // Product pages
     createPage({
       path: '/beats',
       component: path.resolve('src/templates/beats.js'),
