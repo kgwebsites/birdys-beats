@@ -10,8 +10,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop -p 5000",
-    "prebuild": "netlify-lambda install netlify/functions",
-    "build": "yarn prebuild && gatsby build",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write \"{gatsby-*.js,src/**/*.js}\"",
