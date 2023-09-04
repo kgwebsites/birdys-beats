@@ -61,6 +61,7 @@ const appearance = {
 const loader = 'auto';
 
 function CheckoutForm() {
+  const { getAll, getTotal } = useContext(CartContext);
   return (
     <form>
       <h3>Contact info</h3>
@@ -84,6 +85,8 @@ function CheckoutForm() {
           },
         }}
       />
+      <h3>Total</h3>
+      <p>${getTotal}</p>
       <Button type="submit">Submit</Button>
     </form>
   );
