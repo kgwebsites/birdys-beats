@@ -46,8 +46,9 @@ function CheckoutForm() {
 }
 
 const CheckoutPage = () => {
-  const cart = useContext(CartContext);
-  const productIds = cart.getAll().map((product) => product.id);
+  const { getAll } = useContext(CartContext);
+  const productIds =
+    typeof getAll === 'function' ? getAll().map((product) => product.id) : [];
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
