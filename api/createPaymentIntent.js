@@ -1,7 +1,9 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 
 const getProducts = (productMap, productIds) => {
-  return productIds.map((productId) => productMap.get(productId));
+  return productIds
+    .map((productId) => productMap.get(productId))
+    .filter((product) => !!product);
 };
 
 const createProductsMap = (allProducts) => {
