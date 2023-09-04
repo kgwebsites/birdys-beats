@@ -32,6 +32,7 @@ exports.handler = async (event, _context) => {
   const allProducts = require('./product-manifest.json');
   const productMap = createProductsMap(allProducts);
   const products = getProducts(productMap, body.productIds);
+  console.log(allProducts, productMap, products);
   if (products.length < 1) {
     return {
       statusCode: 201,
