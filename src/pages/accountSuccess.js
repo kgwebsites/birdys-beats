@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './accountSuccess.module.css';
+import * as styles from './checkout.module.css';
 
 import ActionCard from '../components/ActionCard';
 import Container from '../components/Container';

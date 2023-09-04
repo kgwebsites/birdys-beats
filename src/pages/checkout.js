@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import * as styles from './accountSuccess.module.css';
-import Container from '../components/Container';
-import Layout from '../components/Layout/Layout';
-import CartContext from '../context/CartProvider';
 import { loadStripe } from '@stripe/stripe-js';
 import {
   Elements,
   PaymentElement,
   LinkAuthenticationElement,
 } from '@stripe/react-stripe-js';
+import * as styles from './checkout.module.css';
+import Container from '../components/Container';
+import Layout from '../components/Layout/Layout';
+import CartContext from '../context/CartProvider';
+import Loader from '../../static/loader.svg';
 
 const stripe = loadStripe(process.env.GATSBY_STRIPE_PUBLIC);
 
@@ -57,12 +58,16 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     const getPaymentIntentRes = async () => {
-      const paymentIntentRes = await fetch('/api/createPaymentIntent', {
-        method: 'POST',
-        body: JSON.stringify({ productIds }),
-      });
-      const paymentIntentData = await paymentIntentRes.json();
-      setClientSecret(paymentIntentData.secret);
+      try {
+        const paymentIntentRes = await fetch('/api/createPaymentIntent', {
+          method: 'POST',
+          body: JSON.stringify({ productIds }),
+        });
+        const paymentIntentData = await paymentIntentRes.json();
+        setClientSecret(paymentIntentData.secret);
+      } catch (e) {
+        console.error(e);
+      }
     };
     getPaymentIntentRes();
   }, [productIds]);
@@ -78,7 +83,11 @@ const CheckoutPage = () => {
             >
               <CheckoutForm />
             </Elements>
-          ) : null}
+          ) : (
+            <div class={styles.center}>
+              <Loader />
+            </div>
+          )}
         </div>
       </Container>
     </Layout>
