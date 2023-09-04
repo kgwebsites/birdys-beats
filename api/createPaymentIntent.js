@@ -24,11 +24,22 @@ exports.handler = async (event, _context) => {
     console.error('body parsing failed', e);
     return {
       statusCode: 405,
+      body: JSON.stringify({
+        error: 'Invalid parameters',
+      }),
     };
   }
   const allProducts = require('./product-manifest.json');
   const productMap = createProductsMap(allProducts);
   const products = getProducts(productMap, body.productIds);
+  if (products.length < 1) {
+    return {
+      statusCode: 201,
+      body: JSON.stringify({
+        error: 'No products found',
+      }),
+    };
+  }
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items: products.map((product) => ({
@@ -49,6 +60,7 @@ exports.handler = async (event, _context) => {
     statusCode: 200,
     body: JSON.stringify({
       id: session.id,
+      error: null,
     }),
   };
 };
