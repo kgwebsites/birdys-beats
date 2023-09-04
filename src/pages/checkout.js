@@ -4,9 +4,13 @@ import Container from '../components/Container';
 import Layout from '../components/Layout/Layout';
 import CartContext from '../context/CartProvider';
 import { loadStripe } from '@stripe/stripe-js';
-import { Elements, PaymentElement } from '@stripe/react-stripe-js';
+import {
+  Elements,
+  PaymentElement,
+  LinkAuthenticationElement,
+} from '@stripe/react-stripe-js';
 
-const stripe = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripe = loadStripe(process.env.GATSBY_STRIPE_PUBLIC);
 
 // Customize the appearance of Elements using the Appearance API.
 const appearance = {
@@ -20,7 +24,7 @@ function CheckoutForm() {
   return (
     <form>
       <h3>Contact info</h3>
-      <linkAuthenticationElement
+      <LinkAuthenticationElement
         // Optional prop for prefilling customer information
         options={{
           defaultValues: {

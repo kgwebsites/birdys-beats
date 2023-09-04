@@ -1,3 +1,5 @@
+require('dotenv');
+
 module.exports = {
   siteMetadata: {
     title: `Birdy's Beats`,
