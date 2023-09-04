@@ -10,3 +10,8 @@
   directory = "api"
   # Includes all Markdown files inside the "files/" directory.
   included_files = ["api/"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
