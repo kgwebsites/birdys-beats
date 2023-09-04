@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import {
+  useStripe,
+  useElements,
   Elements,
   PaymentElement,
   LinkAuthenticationElement,
@@ -63,8 +65,26 @@ const loader = 'auto';
 function CheckoutForm() {
   const { getTotal } = useContext(CartContext);
   const total = getTotal();
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${location.origin}/thanks`,
+      },
+    });
+
+    if (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h3>Contact info</h3>
       <LinkAuthenticationElement
         // Optional prop for prefilling customer information
@@ -87,7 +107,7 @@ function CheckoutForm() {
         }}
       />
       <h3>Total</h3>
-      <p>${total}</p>
+      <p className={styles.mb}>${total}</p>
       <Button level="primary" type="submit">
         Checkout
       </Button>
