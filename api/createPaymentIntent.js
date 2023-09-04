@@ -43,7 +43,7 @@ exports.handler = async (event, _context) => {
     };
   }
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: products.reduce((curr, res) => res + curr.price, 0),
+    amount: products.reduce((res, curr) => res + curr.price, 0),
     currency: 'usd',
     payment_method_types: ['link', 'card'],
   });
