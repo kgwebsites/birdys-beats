@@ -34,7 +34,6 @@ exports.handler = async (event, _context) => {
   const allProducts = require('./product-manifest.json');
   const productMap = createProductsMap(allProducts);
   const products = getProducts(productMap, body.productIds);
-  console.log(allProducts, productMap, body.productIds, products);
   if (products.length < 1) {
     return {
       statusCode: 201,
@@ -43,26 +42,16 @@ exports.handler = async (event, _context) => {
       }),
     };
   }
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: products.map((product) => ({
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: product.title,
-        },
-        unit_amount: product.price,
-      },
-      quantity: 1,
-    })),
-    mode: 'payment',
-    success_url: 'https://birdysbeats.netlify.dev/success',
-    cancel_url: 'https://birdysbeats.netlify.dev/cancel',
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: products.reduce((curr, res) => res + curr.price, 0),
+    currency: 'usd',
+    payment_method_types: ['link', 'card'],
   });
+
   return {
     statusCode: 200,
     body: JSON.stringify({
-      id: session.id,
+      secret: paymentIntent.client_secret,
       error: null,
     }),
   };

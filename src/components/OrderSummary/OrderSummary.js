@@ -38,14 +38,14 @@ const OrderSummary = (props) => {
       </div>
       <div className={styles.actionContainer}>
         <Button
-          onClick={() => navigate('/orderConfirm')}
+          onClick={() => navigate('/checkout')}
           fullWidth
           level={'primary'}
         >
           checkout
         </Button>
         <div className={styles.linkContainer}>
-          <Link to={'/shop'}>CONTINUE SHOPPING</Link>
+          <Link to={'/beats`'}>CONTINUE SHOPPING</Link>
         </div>
       </div>
     </div>
