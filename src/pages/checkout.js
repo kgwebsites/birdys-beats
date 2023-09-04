@@ -67,12 +67,14 @@ const CheckoutPage = () => {
     <Layout disablePaddingBottom>
       <Container size={'medium'}>
         <div className={styles.root}>
-          <Elements
-            stripe={stripe}
-            options={{ clientSecret, appearance, loader }}
-          >
-            <CheckoutForm />
-          </Elements>
+          {clientSecret ? (
+            <Elements
+              stripe={stripe}
+              options={{ clientSecret, appearance, loader }}
+            >
+              <CheckoutForm />
+            </Elements>
+          ) : null}
         </div>
       </Container>
     </Layout>
