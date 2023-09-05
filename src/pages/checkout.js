@@ -71,10 +71,10 @@ function CheckoutForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { error } = await stripe.confirmPayment({
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${location.origin}/thanks`,
+        return_url: `${location.origin}/api/processOrder?paymentIntent=${paymentIntent}`,
       },
     });
 
